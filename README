@@ -1,0 +1,9 @@
+This is a set of tests for the succinct data structure library (sdsl).
+
+We expect that the gtest library (consisting of the files
+libgtest.la and libgtest_main.la) can be found at
+the directory ${HOME}/lib and the header file are in the
+directory ${HOME}/lib/gtest .
+
+You can compile the test by calling "make" and
+execute them by calling "make test".
