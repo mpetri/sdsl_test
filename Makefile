@@ -4,13 +4,10 @@ GCCLIBDIR=-L${HOME}/lib/
 GCCLIB=-lsdsl -ldivsufsort -ldivsufsort64 -lgtest -lpthread
 
 
-all: IntVectorTest RankSupportVTest RankSupportTest SelectSupportTest
+all: IntVectorTest RankSupportTest SelectSupportTest
 
 IntVectorTest: IntVectorTest.cpp
 	g++ ${GCCFLAGS} ${GCCINC} ${GCCLIBDIR} IntVectorTest.cpp -o IntVectorTest ${GCCLIB}
-
-RankSupportVTest: RankSupportVTest.cpp
-	g++ ${GCCFLAGS} ${GCCINC} ${GCCLIBDIR} RankSupportVTest.cpp -o RankSupportVTest ${GCCLIB}
 
 RankSupportTest: RankSupportTest.cpp
 	g++ ${GCCFLAGS} ${GCCINC} ${GCCLIBDIR} RankSupportTest.cpp -o RankSupportTest ${GCCLIB}
@@ -24,4 +21,4 @@ test:
 	./SelectSupportTest
 
 clean:
-	rm -f IntVectorTest RankSupportVTest RankSupportTest SelectSupportTest
+	rm -f IntVectorTest RankSupportTest SelectSupportTest

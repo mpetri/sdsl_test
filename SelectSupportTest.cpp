@@ -2,6 +2,7 @@
 #include "sdsl/int_vector.hpp"
 #include "sdsl/select_support_mcl.hpp" // for select_support_mcl
 #include "sdsl/rrr_vector.hpp" // for rrr_select_support
+#include "sdsl/rrr_vector_var.hpp" // for rrr_var_select_support
 #include "sdsl/sd_vector.hpp" // for sd_select_support
 #include "sdsl/gap_vector.hpp" // for gap_select_suport
 #include "sdsl/bitmagic.hpp"
@@ -86,6 +87,9 @@ using testing::Types;
 
 typedef Types<sdsl::select_support_mcl<>, 
 		      sdsl::rrr_select_support<>,
+		      sdsl::rrr_select_support_var<1, 15>,
+		      sdsl::rrr_select_support_var<1, 31>,
+		      sdsl::rrr_select_support_var<1, 63>,
 			  sdsl::sd_select_support<>,
 			  sdsl::gap_select_support<>
 			  > Implementations;
@@ -101,7 +105,7 @@ TYPED_TEST(SelectSupportTest, SelectMethod){
 		for(size_type j=0, select=0; j < (this->bs[i]).size(); ++j){
 			if( this->bs[i][j] ){
 				++select;
-				EXPECT_EQ( ss.select(select), j ) << " at index "<<j<<" of vector "<<i<<" of length "<<(this->bs[i]).size();
+				EXPECT_EQ( ss.select(select), j ) << " at query "<<select<<" of vector "<<i<<" of length "<<(this->bs[i]).size();
 			}
 		}
 	}
