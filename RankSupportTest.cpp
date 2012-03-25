@@ -89,12 +89,12 @@ using testing::Types;
 typedef Types<
 			  sdsl::rank_support_v<>, 
 		      sdsl::rank_support_v5<>,
+			  sdsl::sd_rank_support<>, 
 			  sdsl::rank_support_jmc,
 			  sdsl::rrr_rank_support<>,
 			  sdsl::rrr_rank_support_var<1, 15>,
 			  sdsl::rrr_rank_support_var<1, 31>,
 			  sdsl::rrr_rank_support_var<1, 63>,
-			  sdsl::sd_rank_support<>, 
 			  sdsl::gap_rank_support<>
 			  > Implementations;
 
