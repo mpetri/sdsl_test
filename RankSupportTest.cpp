@@ -3,6 +3,7 @@
 #include "sdsl/rank_support_v5.hpp" // for rank_support_v5
 #include "sdsl/rank_support_jmc.hpp" // for rank_support_jmc
 #include "sdsl/rrr_vector.hpp" // for rrr_rank_support
+#include "sdsl/bit_vector_interleaved.hpp" // for rank_support_interleaved
 #include "sdsl/rrr_vector_var.hpp" // for rrr_rank_support_var
 #include "sdsl/sd_vector.hpp" // for sd_rank_support
 #include "sdsl/gap_vector.hpp" // for gap_rank_support
@@ -89,6 +90,7 @@ using testing::Types;
 typedef Types<
 			  sdsl::rank_support_v<>, 
 		      sdsl::rank_support_v5<>,
+			  sdsl::rank_support_interleaved<>,
 			  sdsl::sd_rank_support<>, 
 			  sdsl::rank_support_jmc,
 			  sdsl::rrr_rank_support<>,
