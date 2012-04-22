@@ -91,16 +91,17 @@ using testing::Types;
 
 typedef Types<
 sdsl::rank_support_v<>,
-     sdsl::rank_support_v5<>,
-     sdsl::rank_support_interleaved<256>,
-     sdsl::rank_support_interleaved<512>,
-     sdsl::rank_support_interleaved<1024>,
-     sdsl::sd_rank_support<>,
-     sdsl::rank_support_jmc,
-     sdsl::rrr_rank_support<>,
+	 sdsl::rrr_rank_support_var<1, 127>,
      sdsl::rrr_rank_support_var<1, 15>,
      sdsl::rrr_rank_support_var<1, 31>,
      sdsl::rrr_rank_support_var<1, 63>,
+     sdsl::rank_support_v5<>,
+     sdsl::rank_support_interleaved<1,256>,
+     sdsl::rank_support_interleaved<1, 512>,
+     sdsl::rank_support_interleaved<1, 1024>,
+     sdsl::sd_rank_support<>,
+     sdsl::rank_support_jmc,
+     sdsl::rrr_rank_support<>,
      sdsl::gap_rank_support<>
      > Implementations;
 
@@ -116,7 +117,8 @@ TYPED_TEST(RankSupportTest, RankMethod)
         TypeParam rs(&bv);
         size_type rank=0;
         for (size_type j=0; j < (this->bs[i]).size(); ++j) {
-            EXPECT_EQ(rs.rank(j), rank) << " at index "<<j<<" of vector "<<i<<" of length "<<(this->bs[i]).size();
+//            EXPECT_EQ(rs.rank(j), rank) << " at index "<<j<<" of vector "<<i<<" of length "<<(this->bs[i]).size();
+            ASSERT_EQ(rs.rank(j), rank) << " at index "<<j<<" of vector "<<i<<" of length "<<(this->bs[i]).size();
 //			EXPECT_EQ( this->bs[i][j], bv[j]) << "at index "<<j<<
 //				                          " of vector "<<i<<" of length "<< (this->bs[i]).size();
             rank += (this->bs)[i][j];

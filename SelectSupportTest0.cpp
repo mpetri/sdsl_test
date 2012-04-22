@@ -88,17 +88,15 @@ class SelectSupportTest : public ::testing::Test
 
 using testing::Types;
 
-typedef Types<sdsl::select_support_mcl<>,
-        sdsl::rrr_select_support<>,
-        sdsl::rrr_select_support_var<1, 15>,
-        sdsl::rrr_select_support_var<1, 31>,
-        sdsl::rrr_select_support_var<1, 63>,
-        sdsl::rrr_select_support_var<1, 127>,
-        sdsl::sd_select_support<>,
-        sdsl::gap_select_support<>,
-        sdsl::select_support_interleaved<1, 256>,
-        sdsl::select_support_interleaved<1, 512>,
-        sdsl::select_support_interleaved<1, 1024>
+typedef Types<sdsl::select_support_mcl<0>,
+        sdsl::rrr_select_support<0>,
+        sdsl::rrr_select_support_var<0, 15>,
+        sdsl::rrr_select_support_var<0, 31>,
+        sdsl::rrr_select_support_var<0, 63>,
+        sdsl::rrr_select_support_var<0, 127>,
+        sdsl::select_support_interleaved<0, 256>,
+        sdsl::select_support_interleaved<0, 512>,
+        sdsl::select_support_interleaved<0, 1024>
         > Implementations;
 
 TYPED_TEST_CASE(SelectSupportTest, Implementations);
@@ -110,7 +108,7 @@ TYPED_TEST(SelectSupportTest, SelectMethod)
         typename TypeParam::bit_vector_type bv(this->bs[i]);
         TypeParam ss(&bv);
         for (size_type j=0, select=0; j < (this->bs[i]).size(); ++j) {
-            if (this->bs[i][j]) {
+            if ( !(this->bs[i][j]) ) {
                 ++select;
 //				EXPECT_EQ(ss.select(select), j) << " at query "<<select<<" of vector "<<i<<" of length "<<(this->bs[i]).size();
                 ASSERT_EQ(ss.select(select), j) << " at query "<<select<<" of vector "<<i<<" of length "<<(this->bs[i]).size();
